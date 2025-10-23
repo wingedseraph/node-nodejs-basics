@@ -1,6 +1,6 @@
-import { constants, access } from "node:fs/promises";
+import { access, constants } from "node:fs/promises";
 
-export const isFileExist = async (filePath) => {
+export const isFileExists = async (filePath) => {
   const result = await access(filePath, constants.F_OK)
     .then(() => true)
     .catch(() => false);
