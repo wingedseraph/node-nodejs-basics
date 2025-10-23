@@ -1,19 +1,17 @@
 import { URL, fileURLToPath } from "node:url";
-import { access, constants, writeFile } from "node:fs/promises";
+import { writeFile } from "node:fs/promises";
+
+import { isFileExist } from "../utils.js";
+import { ERRORS } from "../const.js";
 
 const filePath = fileURLToPath(new URL("./files/fresh.txt", import.meta.url));
+const content = "I am fresh and young";
 
 const create = async () => {
-  const fileExists = await access(filePath, constants.F_OK)
-    .then(() => true)
-    .catch(() => false);
-
-  if (fileExists) {
-    console.error("FS operation failed");
-    throw new Error("FS operation failed");
+  if (isFileExist(filePath)) {
+    throw new Error(ERRORS.FS_OPERATION_FAILED);
   }
 
-  const content = "I am fresh and young";
   await writeFile(filePath, content);
 };
 
