@@ -1,5 +1,17 @@
+import { readdir } from "node:fs/promises";
+import { URL, fileURLToPath } from "node:url";
+
+import { ERRORS } from "../const.js";
+
+const folderPath = fileURLToPath(new URL("./files/", import.meta.url));
+
 const list = async () => {
-  // Write your code here
+  try {
+    const files = await readdir(folderPath);
+    for (const file of files) console.log(file);
+  } catch (err) {
+    throw new Error(ERRORS.FS_OPERATION_FAILED)
+  }
 };
 
 await list();
