@@ -16,7 +16,7 @@ const read = async () => {
       stdout.write(chunk);
     }
   } catch {
-    throw new Error(ERRORS.FS_OPERATION_FAILED);
+    throw new Error(ERRORS.STREAM_OPERATION_FAILED);
   }
 };
 
