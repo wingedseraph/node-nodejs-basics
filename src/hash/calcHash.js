@@ -13,8 +13,8 @@ const calculateHash = async () => {
     const fileContent = createReadStream(filePath);
     const hash = createHash("sha256");
 
-    for await (const part of fileContent) {
-      hash.update(part);
+    for await (const chunk of fileContent) {
+      hash.update(chunk);
     }
     const hexHash = hash.digest("hex");
 
