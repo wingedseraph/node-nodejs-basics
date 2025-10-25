@@ -1,11 +1,11 @@
 import { Worker, isMainThread } from "node:worker_threads";
-import os from "node:os";
+import { cpus } from "node:os";
 
 import { ERRORS } from "../const.js";
 import { getFilePath } from "../utils.js";
 
 const workerPath = getFilePath("./worker.js", import.meta.url);
-const NUM_WORKERS = os.cpus().length;
+const NUM_WORKERS = cpus().length;
 const INIT_N = 10;
 
 function runWorker(n) {
