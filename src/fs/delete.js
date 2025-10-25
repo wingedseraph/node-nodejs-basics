@@ -1,11 +1,8 @@
 import { rm } from "node:fs/promises";
-import { URL, fileURLToPath } from "node:url";
-
 import { ERRORS } from "../const.js";
+import { getFilePath } from "../utils.js";
 
-const fileSource = fileURLToPath(
-  new URL("./files/fileToRemove.txt", import.meta.url)
-);
+const fileSource = getFilePath("./files/fileToRemove.txt");
 
 const remove = async () => {
   rm(fileSource).catch(() => {

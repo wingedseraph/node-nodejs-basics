@@ -1,12 +1,9 @@
 import { createHash } from "node:crypto";
 import { createReadStream } from "node:fs";
-import { URL, fileURLToPath } from "node:url";
-
 import { ERRORS } from "../const.js";
+import { getFilePath } from "../utils.js";
 
-const filePath = fileURLToPath(
-  new URL("./files/fileToCalculateHashFor.txt", import.meta.url)
-);
+const filePath = getFilePath("./files/fileToCalculateHashFor.txt");
 
 const calculateHash = async () => {
   try {

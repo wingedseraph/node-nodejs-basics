@@ -1,9 +1,8 @@
 import { readFile } from "node:fs/promises";
-import { URL, fileURLToPath } from "node:url";
-
 import { ERRORS } from "../const.js";
+import { getFilePath } from "../utils.js";
 
-const file = fileURLToPath(new URL("./files/fileToRead.txt", import.meta.url));
+const file = getFilePath("./files/fileToRead.txt");
 
 const read = async () => {
   try {

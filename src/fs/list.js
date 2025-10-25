@@ -1,9 +1,8 @@
 import { readdir } from "node:fs/promises";
-import { URL, fileURLToPath } from "node:url";
-
 import { ERRORS } from "../const.js";
+import { getFilePath } from "../utils.js";
 
-const folderPath = fileURLToPath(new URL("./files/", import.meta.url));
+const folderPath = getFilePath("./files/");
 
 const list = async () => {
   try {

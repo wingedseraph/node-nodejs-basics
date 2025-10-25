@@ -1,12 +1,9 @@
 import { createReadStream } from "node:fs";
 import { stdout } from "node:process";
-import { URL, fileURLToPath } from "node:url";
-
 import { ERRORS } from "../const.js";
+import { getFilePath } from "../utils.js";
 
-const filePath = fileURLToPath(
-  new URL("./files/fileToRead.txt", import.meta.url)
-);
+const filePath = getFilePath("./files/fileToRead.txt");
 
 const read = async () => {
   try {

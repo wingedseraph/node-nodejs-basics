@@ -1,8 +1,9 @@
 import { fork } from "node:child_process";
-import { URL, fileURLToPath } from "node:url";
 import { ERRORS } from "../const.js";
 
-const fileSource = fileURLToPath(new URL("./files/script.js", import.meta.url));
+import { getFilePath } from "../utils.js";
+
+const fileSource = getFilePath("./files/script.js");
 
 const spawnChildProcess = async (args) => {
   const child = fork(fileSource, args);

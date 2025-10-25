@@ -1,12 +1,9 @@
 import { cp } from "node:fs/promises";
-import { URL, fileURLToPath } from "node:url";
-
 import { ERRORS } from "../const.js";
+import { getFilePath } from "../utils.js";
 
-const fileSource = fileURLToPath(new URL("./files/", import.meta.url));
-const filePathDestination = fileURLToPath(
-  new URL("./files_copy/", import.meta.url)
-);
+const fileSource = getFilePath("./files/");
+const filePathDestination = getFilePath("./files_copy/");
 
 const copy = async () => {
   cp(fileSource, filePathDestination, {

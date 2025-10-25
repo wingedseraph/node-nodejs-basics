@@ -1,13 +1,10 @@
 import { createWriteStream } from "node:fs";
 import { stdin } from "node:process";
-import { URL, fileURLToPath } from "node:url";
 import { pipeline } from "node:stream/promises";
-
 import { ERRORS } from "../const.js";
+import { getFilePath } from "../utils.js";
 
-const filePath = fileURLToPath(
-  new URL("./files/fileToWrite.txt", import.meta.url)
-);
+const filePath = getFilePath("./files/fileToWrite.txt");
 
 const write = async () => {
   try {
