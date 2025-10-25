@@ -4,7 +4,7 @@ import os from "node:os";
 import { ERRORS } from "../const.js";
 import { getFilePath } from "../utils.js";
 
-const workerPath = getFilePath("./wt/worker.js");
+const workerPath = getFilePath("./worker.js", import.meta.url);
 const NUM_WORKERS = os.cpus().length;
 const INIT_N = 10;
 

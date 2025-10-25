@@ -4,7 +4,7 @@ import { pipeline } from "node:stream/promises";
 import { ERRORS } from "../const.js";
 import { getFilePath } from "../utils.js";
 
-const filePath = getFilePath("./files/fileToWrite.txt");
+const filePath = getFilePath("./files/fileToWrite.txt", import.meta.url);
 
 const write = async () => {
   try {

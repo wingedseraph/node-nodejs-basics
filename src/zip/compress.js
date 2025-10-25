@@ -7,8 +7,8 @@ import { getFilePath } from "../utils.js";
 
 const gzip = createGzip();
 
-const filePathSource = getFilePath("./files/fileToCompress.txt");
-const filePathDestination = getFilePath("./files/archive.gz");
+const filePathSource = getFilePath("./files/fileToCompress.txt", import.meta.url);
+const filePathDestination = getFilePath("./files/archive.gz", import.meta.url);
 
 const source = createReadStream(filePathSource);
 const destination = createWriteStream(filePathDestination);

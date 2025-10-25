@@ -2,7 +2,7 @@ import { readdir } from "node:fs/promises";
 import { ERRORS } from "../const.js";
 import { getFilePath } from "../utils.js";
 
-const folderPath = getFilePath("./files/");
+const folderPath = getFilePath("./files/", import.meta.url);
 
 const list = async () => {
   try {

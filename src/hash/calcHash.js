@@ -3,7 +3,7 @@ import { createReadStream } from "node:fs";
 import { ERRORS } from "../const.js";
 import { getFilePath } from "../utils.js";
 
-const filePath = getFilePath("./files/fileToCalculateHashFor.txt");
+const filePath = getFilePath("./files/fileToCalculateHashFor.txt", import.meta.url);
 
 const calculateHash = async () => {
   try {

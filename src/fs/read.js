@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { ERRORS } from "../const.js";
 import { getFilePath } from "../utils.js";
 
-const file = getFilePath("./files/fileToRead.txt");
+const file = getFilePath("./files/fileToRead.txt", import.meta.url);
 
 const read = async () => {
   try {

@@ -3,7 +3,7 @@ import { ERRORS } from "../const.js";
 
 import { getFilePath } from "../utils.js";
 
-const fileSource = getFilePath("./files/script.js");
+const fileSource = getFilePath("./files/script.js", import.meta.url);
 
 const spawnChildProcess = async (args) => {
   const child = fork(fileSource, args);

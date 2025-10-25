@@ -2,8 +2,8 @@ import { rename as rename_node } from "node:fs/promises";
 import { isFileExists, getFilePath } from "../utils.js";
 import { ERRORS } from "../const.js";
 
-const oldPath = getFilePath("./files/wrongFilename.txt");
-const newPath = getFilePath("./files/properFilename.md");
+const oldPath = getFilePath("./files/wrongFilename.txt", import.meta.url);
+const newPath = getFilePath("./files/properFilename.md", import.meta.url);
 
 const rename = async () => {
   const isMarkdownFileExists = await isFileExists(newPath);

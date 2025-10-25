@@ -8,5 +8,5 @@ export const isFileExists = async (filePath) => {
   return result;
 };
 
-export const getFilePath = (relativePath) =>
-  fileURLToPath(new URL(relativePath, import.meta.url));
+export const getFilePath = (relativePath, callerUrl) =>
+  fileURLToPath(new URL(relativePath, callerUrl));

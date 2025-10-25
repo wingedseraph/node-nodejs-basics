@@ -3,7 +3,7 @@ import { stdout } from "node:process";
 import { ERRORS } from "../const.js";
 import { getFilePath } from "../utils.js";
 
-const filePath = getFilePath("./files/fileToRead.txt");
+const filePath = getFilePath("./files/fileToRead.txt", import.meta.url);
 
 const read = async () => {
   try {
