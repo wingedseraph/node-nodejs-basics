@@ -14,7 +14,7 @@ function runWorker(n) {
       workerData: n,
     });
     worker.on("message", (result) => {
-      resolve({ n, result: result });
+      resolve({ n, result });
     });
     worker.on("error", reject);
   });
