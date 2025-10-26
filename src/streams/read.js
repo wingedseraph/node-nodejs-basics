@@ -12,6 +12,8 @@ const read = async () => {
     for await (const chunk of fileContent) {
       stdout.write(chunk);
     }
+
+    console.log("\n\n==end==");
   } catch {
     throw new Error(ERRORS.STREAM_OPERATION_FAILED);
   }
