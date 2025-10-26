@@ -1,5 +1,16 @@
+import { writeFile } from "node:fs/promises";
+import { isFileExists, getFilePath } from "../utils.js";
+import { ERRORS } from "../const.js";
+
+const filePath = getFilePath("./files/fresh.txt", import.meta.url);
+const content = "I am fresh and young";
+
 const create = async () => {
-  // Write your code here
+  if (isFileExists(filePath)) {
+    throw new Error(ERRORS.FS_OPERATION_FAILED);
+  }
+
+  await writeFile(filePath, content);
 };
 
 await create();
