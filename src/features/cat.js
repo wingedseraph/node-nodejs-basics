@@ -6,7 +6,7 @@ export const cat = async (path) => {
   try {
     const data = await readFile(path, "utf8");
     console.log(data);
-  } catch {
-    throw new Error(ERRORS.OPERATION_FAILED);
+  } catch (err) {
+    console.error(ERRORS.OPERATION_FAILED, err.message);
   }
 };

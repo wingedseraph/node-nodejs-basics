@@ -4,7 +4,7 @@ import { getPath } from "../utils/getPath.js";
 import { getFiletype } from "../utils/getFiletype.js";
 import { ERRORS } from "../utils/const.js";
 
-export const listFiles = async (path = ".") => {
+export const list = async (path = ".") => {
   try {
     const entries = await readdir(getPath(path), { withFileTypes: true });
     console.log(path);
@@ -14,6 +14,6 @@ export const listFiles = async (path = ".") => {
 
     console.table(results);
   } catch (err) {
-    console.error(ERRORS.OPERATION_FAILED);
+    console.error(ERRORS.OPERATION_FAILED, err.message);
   }
 };
