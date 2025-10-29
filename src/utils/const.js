@@ -5,3 +5,7 @@ export const MESSAGES = {
 };
 
 export const FALLBACK_USERNAME = "guest";
+
+export const ERRORS = {
+  OPERATION_FAILED: "Operation failed",
+};
