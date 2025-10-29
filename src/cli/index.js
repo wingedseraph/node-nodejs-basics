@@ -2,7 +2,7 @@ import { createInterface } from "node:readline/promises";
 import { homedir } from "node:os";
 
 import { getUsername, showIntroMessage, showOutroMessage } from "../utils/getUsername.js";
-import { commands } from "../commands/index.js";
+import { commands, getCommandList } from "../commands/index.js";
 
 export const printCWD = () => console.log(`You are currently in ${process.cwd()}`);
 
@@ -13,6 +13,11 @@ async function startFileManager() {
     input: process.stdin,
     output: process.stdout,
     prompt: "> ",
+    completer: async function (line) {
+      const completions = await getCommandList();
+      const hits = completions.filter((c) => c.startsWith(line));
+      return [hits.length ? hits : completions, line];
+    },
   });
 
   process.chdir(homedir());

@@ -16,3 +16,7 @@ export const commands = {
   },
   cat: async (args) => console.log(":: cat ::", args),
 };
+
+export const getCommandList = async () => {
+  return Object.entries(commands).map((e) => e[0]);
+};
