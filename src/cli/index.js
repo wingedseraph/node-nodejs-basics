@@ -1,28 +1,57 @@
-import { BG_BLUE } from "../utils/colors.js";
+import { createInterface } from "node:readline";
+import { homedir } from "node:os";
 
-const REGEX_USERNAME = "--username=";
-const FALLBACK_USERNAME = "guest";
-const INTRO = "Welcome to the File Manager, ";
+import { getUsername, showIntroMessage, showOutroMessage } from "../utils/getUsername.js";
+const username = getUsername();
 
-const parseArgs = () => {
-  try {
-    const args = process.argv.slice(2);
+const printCWD = () => console.log(`You are currently in ${process.cwd()}`);
 
-    if (args.length === 0) {
-      console.log(INTRO + BG_BLUE + FALLBACK_USERNAME);
-      return;
-    }
+const rl = createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  prompt: "> ",
+});
 
-    for (const arg of args) {
-      if (typeof arg === "string" && arg.startsWith(REGEX_USERNAME)) {
-        console.log(INTRO + BG_BLUE + arg.replace(REGEX_USERNAME, ""));
-      } else {
-        console.log(INTRO + BG_BLUE + FALLBACK_USERNAME);
-      }
-    }
-  } catch (error) {
-    console.error(error.message);
+process.chdir(homedir());
+showIntroMessage(username);
+printCWD();
+rl.prompt();
+
+rl.on("line", (line) => {
+  const input = line.trim();
+
+  if (input === ".exit") {
+    rl.close();
+    return;
   }
-};
 
-parseArgs();
+  switch (input) {
+    case "pwd":
+      printCWD();
+      break;
+    case "cd":
+      console.log(":: cd ::"); // use process.chdir
+      break;
+    case "up":
+      console.log(":: up ::"); // use process.chdir
+      break;
+    case "ls":
+      console.log(":: ls ::"); // use console.table
+      break;
+    case "cat":
+      console.log(":: cat ::");
+      break;
+
+    default:
+      console.error("Invalid input");
+      break;
+  }
+  rl.prompt();
+}).on("close", () => {
+  showOutroMessage(username);
+  process.exit(0);
+});
+
+rl.on("SIGINT", () => {
+  rl.close();
+});
