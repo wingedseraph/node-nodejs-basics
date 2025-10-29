@@ -15,6 +15,5 @@ export const listFiles = async (path = ".") => {
     console.table(results);
   } catch (err) {
     console.error(ERRORS.OPERATION_FAILED);
-    console.log(err.message);
   }
 };
