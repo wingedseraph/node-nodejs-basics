@@ -15,6 +15,8 @@ export const hash = async (path) => {
 
     console.log(hexHash);
   } catch (err) {
-    console.error(ERRORS.OPERATION_FAILED, err.message);
+    if (err instanceof Error) throw new Error(err.message);
+
+    throw new Error(ERRORS.OPERATION_FAILED);
   }
 };

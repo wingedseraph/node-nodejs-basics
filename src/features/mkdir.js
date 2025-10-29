@@ -4,13 +4,14 @@ import { ERRORS } from "../utils/const.js";
 
 export const mkdir = async (path) => {
   if (path === process.cwd()) {
-    console.error(ERRORS.OPERATION_FAILED);
-    return false;
+    throw new Error(ERRORS.OPERATION_FAILED);
   }
 
   try {
     await mkdir_(path);
   } catch (err) {
-    console.error(ERRORS.OPERATION_FAILED, err.message);
+    if (err instanceof Error) throw new Error(err.message);
+
+    throw new Error(ERRORS.OPERATION_FAILED);
   }
 };

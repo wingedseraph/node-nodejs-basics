@@ -1,25 +1,22 @@
-import { getPath } from "../utils/getPath.js";
-import { listFiles } from "../features/list.js";
-import { cat } from "../features/cat.js";
+import { list, cat, add, cd, mkdir, rn, cp, hash, compress, decompress, up } from "../features/index.js";
+import { withPath } from "../utils/withPath.js";
 
 export const commands = {
-  ".exit": async () => rl.close(),
+  "": async () => null,
   pwd: async () => null,
-  cd: async (args) => {
-    const [path] = args;
-    console.log(":: cd ::", path);
-  },
+  cd: withPath(cd),
   up: async () => console.log(":: up ::"),
-  ls: async (args) => {
-    const [path] = args;
-    const targetPath = getPath(path);
-    await listFiles(targetPath);
-  },
-  cat: async (args) => {
-    const [path] = args;
-    const targetPath = getPath(path);
-    await cat(targetPath);
-  },
+  ls: withPath(list),
+  cat: withPath(cat),
+  add: withPath(add),
+  mkdir: withPath(mkdir),
+  rn: withPath(rn),
+  cp: withPath(cp),
+  mv: withPath(rn),
+  hash: withPath(hash),
+  compress: withPath(compress),
+  decompress: withPath(decompress),
+  up: withPath(up),
 };
 
 export const getCommandList = async () => {

@@ -1,12 +1,17 @@
 import { createInterface } from "node:readline/promises";
+import { styleText } from "node:util";
 import { homedir } from "node:os";
 
 import { getUsername, showIntroMessage, showOutroMessage } from "../utils/getUsername.js";
 import { commands, getCommandList } from "../commands/index.js";
+import { ERRORS } from "../utils/const.js";
 
 export const printCWD = () => console.log(`You are currently in ${process.cwd()}`);
 
 const username = getUsername();
+
+const getSuccessPrompt = () => styleText("green", "Success > ");
+const getFailurePrompt = () => styleText("red", "Invalid input > ");
 
 async function startFileManager() {
   const rl = createInterface({
@@ -35,11 +40,29 @@ async function startFileManager() {
       const input = line.trim();
       const [command, ...args] = input.split(/\s+/);
 
+      if (input === ".exit") {
+        rl.close();
+        return;
+      }
+
+      let operationSucceeded = true;
       const operation = commands[command];
-      if (operation) {
-        await operation(args);
+
+      try {
+        if (operation) {
+          await operation(args);
+        } else {
+          operationSucceeded = false;
+        }
+      } catch (err) {
+        console.error(ERRORS.OPERATION_FAILED, err.message);
+        operationSucceeded = false;
+      }
+
+      if (operationSucceeded) {
+        rl.setPrompt(getSuccessPrompt());
       } else {
-        console.error("Invalid input");
+        rl.setPrompt(getFailurePrompt());
       }
 
       printCWD();

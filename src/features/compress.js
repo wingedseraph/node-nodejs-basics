@@ -1,13 +1,13 @@
 import { createReadStream, createWriteStream } from "node:fs";
-import { createBrotliCompress } from "node:zlib";
-import { pipeline } from "node:stream/promises";
 import { rm } from "node:fs/promises";
+import { pipeline } from "node:stream/promises";
+import { createBrotliCompress } from "node:zlib";
 
 import { ERRORS } from "../utils/const.js";
 
 export const compress = async (oldPath, newPath) => {
   if (!oldPath || !newPath) {
-    return null;
+    throw new Error(ERRORS.OPERATION_FAILED);
   }
 
   console.log(oldPath, newPath);
@@ -19,6 +19,8 @@ export const compress = async (oldPath, newPath) => {
     await pipeline(source, compressor, destination);
     await rm(oldPath);
   } catch (err) {
-    console.error(ERRORS.OPERATION_FAILED, err.message);
+    if (err instanceof Error) throw new Error(err.message);
+
+    throw new Error(ERRORS.OPERATION_FAILED);
   }
 };

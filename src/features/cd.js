@@ -4,6 +4,8 @@ export const cd = (path) => {
   try {
     process.chdir(path);
   } catch (err) {
-    console.error(ERRORS.OPERATION_FAILED, err.message);
+    if (err instanceof Error) throw new Error(err.message);
+
+    throw new Error(ERRORS.OPERATION_FAILED);
   }
 };

@@ -7,6 +7,8 @@ export const up = () => {
 
     process.chdir(parentPath);
   } catch (err) {
-    console.error(ERRORS.OPERATION_FAILED, err.message);
+    if (err instanceof Error) throw new Error(err.message);
+
+    throw new Error(ERRORS.OPERATION_FAILED);
   }
 };

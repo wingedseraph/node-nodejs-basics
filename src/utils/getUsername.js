@@ -1,6 +1,6 @@
 import { parseArgs as parseArgsNode } from "node:util";
+import { styleText } from "node:util";
 
-import { RESET, UNDERSCORE } from "../utils/colors.js";
 import { MESSAGES, FALLBACK_USERNAME } from "../utils/const.js";
 
 const options = { username: { type: "string" } };
@@ -19,7 +19,7 @@ export const getUsername = () => {
   }
 };
 
-export const showIntroMessage = (username = FALLBACK_USERNAME) => console.log(`${MESSAGES.INTRO}${UNDERSCORE}${username}${RESET}`);
+export const showIntroMessage = (username = FALLBACK_USERNAME) => console.log(MESSAGES.INTRO + styleText("underline", username));
 
 export const showOutroMessage = (username = FALLBACK_USERNAME) =>
-  console.log(`${MESSAGES.OUTRO_1}${UNDERSCORE}${username}${RESET}${MESSAGES.OUTRO_2}`);
+  console.log(MESSAGES.OUTRO_1 + styleText("underline", username) + MESSAGES.OUTRO_2);

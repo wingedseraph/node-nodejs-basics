@@ -1,8 +1,8 @@
 import { readdir } from "node:fs/promises";
 
-import { getPath } from "../utils/getPath.js";
-import { getFiletype } from "../utils/getFiletype.js";
 import { ERRORS } from "../utils/const.js";
+import { getFiletype } from "../utils/getFiletype.js";
+import { getPath } from "../utils/getPath.js";
 
 export const list = async (path = ".") => {
   try {
@@ -14,6 +14,8 @@ export const list = async (path = ".") => {
 
     console.table(results);
   } catch (err) {
-    console.error(ERRORS.OPERATION_FAILED, err.message);
+    if (err instanceof Error) throw new Error(err.message);
+
+    throw new Error(ERRORS.OPERATION_FAILED);
   }
 };
