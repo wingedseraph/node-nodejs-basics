@@ -2,12 +2,11 @@ import { createInterface } from "node:readline/promises";
 import { homedir } from "node:os";
 
 import { getUsername, showIntroMessage, showOutroMessage } from "../utils/getUsername.js";
-import { getPath } from "../utils/getPath.js";
-import { listFiles } from "../features/list.js";
+import { commands } from "../commands/index.js";
+
+export const printCWD = () => console.log(`You are currently in ${process.cwd()}`);
 
 const username = getUsername();
-
-const printCWD = () => console.log(`You are currently in ${process.cwd()}`);
 
 async function startFileManager() {
   const rl = createInterface({
@@ -31,31 +30,11 @@ async function startFileManager() {
       const input = line.trim();
       const [command, ...args] = input.split(/\s+/);
 
-      switch (command) {
-        case ".exit":
-          rl.close();
-          break;
-        case "pwd":
-          printCWD();
-          break;
-        case "cd":
-          console.log(":: cd ::"); // use process.chdir
-          break;
-        case "up":
-          console.log(":: up ::");
-          break;
-        case "ls":
-          const [path] = args;
-          const targetPath = getPath(path);
-          await listFiles(targetPath);
-
-          break;
-        case "cat":
-          console.log(":: cat ::");
-          break;
-        default:
-          console.error("Invalid input");
-          break;
+      const operation = commands[command];
+      if (operation) {
+        await operation(args);
+      } else {
+        console.error("Invalid input");
       }
 
       printCWD();
