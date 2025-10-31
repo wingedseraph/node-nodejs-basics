@@ -2,7 +2,7 @@ export const cd = (path) => {
   try {
     process.chdir(path);
   } catch (err) {
-    if (err instanceof Error) throw new Error(err.message);
+    if (err instanceof Error) throw err.message;
 
     throw new Error();
   }
