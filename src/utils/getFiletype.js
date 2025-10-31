@@ -12,8 +12,8 @@ export const getFiletype = (entries) => {
     }
 
     return {
-      name: dirent.name,
-      type,
+      Name: dirent.name,
+      Type: type,
     };
   });
 };
