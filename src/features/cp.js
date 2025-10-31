@@ -19,7 +19,7 @@ export const cp = async (oldPath, newPath) => {
   const destinationStream = createWriteStream(newPath);
 
   try {
-    pipeline(sourceStream, destinationStream);
+    await pipeline(sourceStream, destinationStream);
   } catch (err) {
     if (err instanceof Error) throw err.message;
 

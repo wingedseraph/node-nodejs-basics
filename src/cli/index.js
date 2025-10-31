@@ -74,4 +74,4 @@ async function startFileManager() {
   }
 }
 
-startFileManager();
+await startFileManager();
