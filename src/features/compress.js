@@ -7,7 +7,7 @@ import { ERRORS } from "../utils/const.js";
 
 export const compress = async (oldPath, newPath) => {
   if (!oldPath || !newPath) {
-    throw new Error(ERRORS.OPERATION_FAILED);
+    throw new Error(ERRORS.NO_ARGS);
   }
 
   console.log(oldPath, newPath);
@@ -21,6 +21,6 @@ export const compress = async (oldPath, newPath) => {
   } catch (err) {
     if (err instanceof Error) throw new Error(err.message);
 
-    throw new Error(ERRORS.OPERATION_FAILED);
+    throw new Error();
   }
 };

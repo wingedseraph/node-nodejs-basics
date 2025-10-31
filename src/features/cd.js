@@ -1,11 +1,9 @@
-import { ERRORS } from "../utils/const.js";
-
 export const cd = (path) => {
   try {
     process.chdir(path);
   } catch (err) {
     if (err instanceof Error) throw new Error(err.message);
 
-    throw new Error(ERRORS.OPERATION_FAILED);
+    throw new Error();
   }
 };

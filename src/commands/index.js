@@ -1,11 +1,10 @@
-import { list, cat, add, cd, mkdir, rn, cp, hash, compress, decompress, up } from "../features/index.js";
+import { add, cat, cd, compress, cp, decompress, hash, list, mkdir, os, rn, up } from "../features/index.js";
 import { withPath } from "../utils/withPath.js";
 
 export const commands = {
   "": async () => null,
   pwd: async () => null,
   cd: withPath(cd),
-  up: async () => console.log(":: up ::"),
   ls: withPath(list),
   cat: withPath(cat),
   add: withPath(add),
@@ -17,6 +16,7 @@ export const commands = {
   compress: withPath(compress),
   decompress: withPath(decompress),
   up: withPath(up),
+  os: os,
 };
 
 export const getCommandList = async () => {

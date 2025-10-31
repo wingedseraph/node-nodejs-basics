@@ -7,7 +7,7 @@ export const rn = async (oldPath, newPath) => {
   const [isSourceExists, isDestinationExists] = await Promise.all([isFileExists(oldPath), isFileExists(newPath)]);
 
   if (!isSourceExists || isDestinationExists) {
-    const err = isSourceExists ? (isDestinationExists ? ERRORS.DESTINATION_DOESNT_EXISTS : "") : ERRORS.SOURCE_DOESNT_EXISTS;
+    const err = isSourceExists ? (isDestinationExists ? ERRORS.DESTINATION_ALREADY_EXISTS : "") : ERRORS.SOURCE_DOESNT_EXIST;
     throw new Error(err);
   }
 
@@ -16,6 +16,6 @@ export const rn = async (oldPath, newPath) => {
   } catch (err) {
     if (err instanceof Error) throw new Error(err.message);
 
-    throw new Error(ERRORS.OPERATION_FAILED);
+    throw new Error();
   }
 };

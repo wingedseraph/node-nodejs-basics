@@ -1,8 +1,6 @@
 import { createHash } from "node:crypto";
 import { createReadStream } from "node:fs";
 
-import { ERRORS } from "../utils/const.js";
-
 export const hash = async (path) => {
   try {
     const fileContent = createReadStream(path);
@@ -17,6 +15,6 @@ export const hash = async (path) => {
   } catch (err) {
     if (err instanceof Error) throw new Error(err.message);
 
-    throw new Error(ERRORS.OPERATION_FAILED);
+    throw new Error();
   }
 };

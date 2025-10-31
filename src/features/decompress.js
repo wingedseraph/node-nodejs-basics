@@ -7,7 +7,7 @@ import { ERRORS } from "../utils/const.js";
 
 export const decompress = async (oldPath, newPath) => {
   if (!oldPath || !newPath) {
-    throw new Error();
+    throw new Error(ERRORS.NO_ARGS);
   }
 
   const source = createReadStream(oldPath);
@@ -20,6 +20,6 @@ export const decompress = async (oldPath, newPath) => {
   } catch (err) {
     if (err instanceof Error) throw new Error(err.message);
 
-    throw new Error(ERRORS.OPERATION_FAILED);
+    throw new Error();
   }
 };

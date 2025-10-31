@@ -1,4 +1,3 @@
-import { ERRORS } from "../utils/const.js";
 import { getPath } from "../utils/getPath.js";
 
 export const up = () => {
@@ -9,6 +8,6 @@ export const up = () => {
   } catch (err) {
     if (err instanceof Error) throw new Error(err.message);
 
-    throw new Error(ERRORS.OPERATION_FAILED);
+    throw new Error();
   }
 };

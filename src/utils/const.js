@@ -10,6 +10,9 @@ export const FALLBACK_USERNAME = "guest";
 
 export const ERRORS = {
   OPERATION_FAILED: styleText("redBright", "Operation failed"),
-  SOURCE_DOESNT_EXISTS: styleText("redBright", ":: Source doesnt exists ::"),
-  DESTINATION_DOESNT_EXISTS: styleText("redBright", ":: Destination already exists ::"),
+  UNKNOWN_ERROR: styleText("redBright", ":: Something went wrong ::"),
+  OS_ERROR: styleText("redBright", ":: No such method for OS >>"),
+  NO_ARGS: styleText("redBright", ":: Arguments must be provided and must be strings ::"),
+  SOURCE_DOESNT_EXIST: styleText("redBright", ":: Source does not exist ::"),
+  DESTINATION_ALREADY_EXISTS: styleText("redBright", ":: Destination already exists ::"),
 };
