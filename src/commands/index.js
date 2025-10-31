@@ -20,5 +20,5 @@ export const commands = {
 };
 
 export const getCommandList = async () => {
-  return Object.entries(commands).map((e) => e[0]);
+  return Object.keys(commands);
 };
