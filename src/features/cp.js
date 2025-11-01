@@ -21,7 +21,7 @@ export const cp = async (oldPath, newPath) => {
   try {
     await pipeline(sourceStream, destinationStream);
   } catch (err) {
-    if (err instanceof Error) throw err.message;
+    if (err instanceof Error) throw err
 
     throw new Error();
   }

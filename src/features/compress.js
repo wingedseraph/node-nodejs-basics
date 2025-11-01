@@ -19,7 +19,7 @@ export const compress = async (oldPath, newPath) => {
     await pipeline(source, compressor, destination);
     await rm(oldPath);
   } catch (err) {
-    if (err instanceof Error) throw err.message;
+    if (err instanceof Error) throw err
 
     throw new Error();
   }

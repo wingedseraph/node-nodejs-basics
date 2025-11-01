@@ -9,7 +9,7 @@ export const mkdir = async (path) => {
   try {
     await mkdir_(path);
   } catch (err) {
-    if (err instanceof Error) throw err.message;
+    if (err instanceof Error) throw err;
 
     throw new Error();
   }

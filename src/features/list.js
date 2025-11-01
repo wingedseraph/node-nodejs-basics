@@ -13,7 +13,7 @@ export const list = async (path = ".") => {
 
     console.table(results);
   } catch (err) {
-    if (err instanceof Error) throw err.message;
+    if (err instanceof Error) throw err;
 
     throw new Error();
   }

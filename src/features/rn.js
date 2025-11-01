@@ -14,7 +14,7 @@ export const rn = async (oldPath, newPath) => {
   try {
     rename_(oldPath, newPath);
   } catch (err) {
-    if (err instanceof Error) throw err.message;
+    if (err instanceof Error) throw err;
 
     throw new Error();
   }
