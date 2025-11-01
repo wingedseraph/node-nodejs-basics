@@ -1,4 +1,4 @@
-import { rename as rename_ } from "node:fs/promises";
+import { rename } from "node:fs/promises";
 
 import { ERRORS } from "../utils/const.js";
 import { isFileExists } from "../utils/isFileExists.js";
@@ -12,7 +12,7 @@ export const rn = async (oldPath, newPath) => {
   }
 
   try {
-    rename_(oldPath, newPath);
+    rename(oldPath, newPath);
   } catch (err) {
     if (err instanceof Error) throw err;
 
