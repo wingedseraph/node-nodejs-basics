@@ -4,9 +4,10 @@ export { add } from "./add.js";
 export { cd } from "./cd.js";
 export { mkdir } from "./mkdir.js";
 export { rn } from "./rn.js";
+export { mv } from "./mv.js";
 export { cp } from "./cp.js";
 export { hash } from "./hash.js";
 export { compress } from "./compress.js";
 export { decompress } from "./decompress.js";
 export { up } from "./up.js";
-export { os } from './os.js'
+export { os } from "./os.js";

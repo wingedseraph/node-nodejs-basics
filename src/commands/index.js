@@ -1,4 +1,4 @@
-import { add, cat, cd, compress, cp, decompress, hash, list, mkdir, os, rn, up } from "../features/index.js";
+import { add, cat, cd, compress, cp, decompress, hash, list, mkdir, os, rn, up, mv } from "../features/index.js";
 import { withPath } from "../utils/withPath.js";
 
 export const commands = {
@@ -11,7 +11,7 @@ export const commands = {
   mkdir: withPath(mkdir),
   rn: withPath(rn),
   cp: withPath(cp),
-  mv: withPath(rn),
+  mv: withPath(mv),
   hash: withPath(hash),
   compress: withPath(compress),
   decompress: withPath(decompress),
