@@ -1,9 +1,9 @@
 import { createReadStream, createWriteStream } from "node:fs";
 import { rm } from "node:fs/promises";
 
+import { pipeline } from "node:stream/promises";
 import { ERRORS } from "../utils/const.js";
 import { isFileExists } from "../utils/isFileExists.js";
-import { pipeline } from "node:stream/promises";
 
 export const mv = async (oldPath, newPath) => {
   if (!oldPath || !newPath) {
