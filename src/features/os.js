@@ -7,6 +7,7 @@ const OS_METHOD_MAP = {
 };
 
 const SPECIAL_HANDLERS = {
+  EOL: (result) => console.log(JSON.stringify(result)),
   username: (result) => console.log(`username is ${result.username}`),
   cpus: (result) => {
     console.table(result.map((cpu) => ({ Model: cpu.model, "Clock rate (GHz)": cpu.speed / 1000 })));
@@ -43,3 +44,4 @@ export const os = async (args) => {
   printResult(key, method, methodName);
   return true;
 };
+
